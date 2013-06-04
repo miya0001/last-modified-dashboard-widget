@@ -3,7 +3,7 @@
 Plugin Name: Last Modified Dashboard Widget
 Author: Takayuki Miyauchi
 Plugin URI: http://wpist.me/
-Description: Display Posts and Pages on the dashoboard in order of descending of modified..
+Description: Display Posts and Pages on the dashboard in order of descending of modified.
 Version: 0.1.0
 Author URI: http://wpist.me/
 Domain Path: /languages

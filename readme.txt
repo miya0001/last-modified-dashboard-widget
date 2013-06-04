@@ -1,12 +1,12 @@
 === Last Modified Dashboard Widget ===
 Contributors: miyauchi
 Donate link: http://wpist.me/
-Tags: widget
+Tags: dashboard, widget
 Requires at least: 3.5
 Tested up to: 3.5
 Stable tag: 0.1.0
 
-Display Posts and Pages on the Dashoboard in order of descending of modified.
+Display Posts and Pages on the Dashboard in order of descending of modified.
 
 == Description ==
 
