@@ -1,6 +1,13 @@
 <?php
 /*
 Plugin Name: Last Modified Dashboard Widget
+Author: Takayuki Miyauchi
+Plugin URI: http://wpist.me/
+Description: Display Posts and Pages on the dashoboard in order of descending of modified..
+Version: 0.1.0
+Author URI: http://wpist.me/
+Domain Path: /languages
+Text Domain: last-modified-dashboard-widget
 */
 
 $last_modified_dashboard_widget = new Last_Modified_Dashboard_Widget();
@@ -43,18 +50,28 @@ public function callback()
     echo '<ul>';
     foreach ($posts as $p) {
         echo '<li><h4>';
-        echo '<a href="'.get_edit_post_link($p->ID, false).'">'.$p->post_title.'</a>';
-        echo ' <span style="color:#999;font-size:12px;margin-left:3px;" class="rss-date">'.$p->post_modified.' by '.esc_html($this->get_the_modified_author($p->ID)).'</span>';
+        printf (
+            '<a href="%1$s">%2$s</a>',
+            get_edit_post_link($p->ID, false),
+            strip_tags($p->post_title)
+        );
+        printf(
+            '<span style="%1$s">%2$s by %3$s at %4$s</span>',
+            'color:#999;font-size:12px;margin-left:3px;"',
+            ucfirst($p->post_status),
+            esc_html($this->get_modified_author($p->ID)),
+            $p->post_modified
+        );
         echo '</h4></li>';
     }
     echo '</ul>';
 }
 
-public function get_the_modified_author($post_id) {
-	if ( $last_id = get_post_meta($post_id, '_edit_last', true)) {
-		$last_user = get_userdata($last_id);
-		return $last_user->display_name;
-	}
+public function get_modified_author($post_id) {
+    if ( $last_id = get_post_meta($post_id, '_edit_last', true)) {
+        $last_user = get_userdata($last_id);
+        return $last_user->display_name;
+    }
 }
 
 } // end class
