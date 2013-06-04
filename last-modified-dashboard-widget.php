@@ -59,7 +59,7 @@ public function callback()
             '<span style="%1$s">%2$s by %3$s at %4$s</span>',
             'color:#999;font-size:12px;margin-left:3px;"',
             ucfirst($p->post_status),
-            esc_html($this->get_modified_author($p->ID)),
+            esc_html($this->get_modified_author($p)),
             $p->post_modified
         );
         echo '</h4></li>';
@@ -67,11 +67,13 @@ public function callback()
     echo '</ul>';
 }
 
-public function get_modified_author($post_id) {
-    if ( $last_id = get_post_meta($post_id, '_edit_last', true)) {
-        $last_user = get_userdata($last_id);
-        return $last_user->display_name;
+public function get_modified_author($post) {
+    $last_id = get_post_meta($post->ID, '_edit_last', true);
+    if (!$last_id) {
+        $last_id = $post->post_author;
     }
+    $last_user = get_userdata($last_id);
+    return $last_user->display_name;
 }
 
 } // end class
