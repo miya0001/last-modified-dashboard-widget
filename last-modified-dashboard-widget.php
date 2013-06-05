@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Last Modified Dashboard Widget
+Plugin Name: Recent Updates Dashboard Widget
 Author: Takayuki Miyauchi
 Plugin URI: http://wpist.me/
 Description: Display Posts and Pages on the dashboard in order of descending of modified.
-Version: 0.1.0
+Version: 0.2.0
 Author URI: http://wpist.me/
 Domain Path: /languages
 Text Domain: last-modified-dashboard-widget
@@ -16,11 +16,6 @@ $last_modified_dashboard_widget->register();
 
 class Last_Modified_Dashboard_Widget {
 
-function __construct()
-{
-
-}
-
 public function register()
 {
     add_action('wp_dashboard_setup', array($this, 'wp_dashboard_setup'));
@@ -30,7 +25,7 @@ public function wp_dashboard_setup()
 {
     wp_add_dashboard_widget(
         'last-modified',
-        'Last Modified',
+        'Recent Updates',
         array($this, 'callback')
     );
 }
@@ -39,7 +34,8 @@ public function callback()
 {
     $args = array(
         'post_type' => 'any',
-        'post_status' => 'any',
+        //'post_status' => array('publish', 'pending', 'draft', 'future', 'private', 'inherit', 'trash'),
+        'post_status' => array('publish', 'pending', 'draft', 'future', 'private'),
         'orderby' => 'modified',
         'order' => 'DESC',
         'posts_per_page' => 10,

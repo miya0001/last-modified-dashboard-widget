@@ -1,14 +1,21 @@
-=== Last Modified Dashboard Widget ===
+=== Recent Updates Dashboard Widget ===
 Contributors: miyauchi
 Donate link: http://wpist.me/
 Tags: dashboard, widget
 Requires at least: 3.5
 Tested up to: 3.5
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 
 Display Posts and Pages on the Dashboard in order of descending of modified.
 
 == Description ==
+
+Display Posts and Pages on the Dashboard in order of descending of modified.
+
+* Post and Page Title
+* Status
+* Last author
+* Modified Date
 
 [This plugin maintained on GitHub.](https://github.com/miya0001/last-modified-dashboard-widget)
 
